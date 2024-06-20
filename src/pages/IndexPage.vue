@@ -6,7 +6,7 @@
       @comprar="onComprar"
       @detalhes="onDetalhes"
       @retirar="onRetirar"
-      :botoes="['', 'comprar']"
+      :botoes="['teste', 'comprar']"
     />
     <EscolherComplementos
       v-if="mostrandoComplementos"
@@ -46,7 +46,7 @@ export default defineComponent({
         const response = await axios.get("http://localhost:3000/produtos");
         this.arrProdutos = response.data;
       } catch (error) {
-        console.error("Erro ao carregar produtos:", error);
+        console.error("Erro ao carregar:", error);
       }
     },
     async onComprar(produto) {
