@@ -72,7 +72,7 @@ export default defineComponent({
         );
         console.log("Cadastro efetuado com sucesso:", response.data);
       } catch (error) {
-        console.error("Erro ao salvar cadastro:", error);
+        console.error("Erro ao salvar:", error);
       }
     },
   },
