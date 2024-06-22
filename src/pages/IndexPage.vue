@@ -6,7 +6,7 @@
       @comprar="onComprar"
       @detalhes="onDetalhes"
       @retirar="onRetirar"
-      :botoes="['Ola mundo', 'comprar']"
+      :botoes="['Casa', 'comprar']"
     />
     <EscolherComplementos
       v-if="mostrandoComplementos"
