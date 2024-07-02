@@ -1,6 +1,6 @@
 <template>
-  <q-page>
-    <h1 class="page-title">Escolha os complementos para montar o açaí</h1>
+  <q-page class="container">
+    <h1 class="page-title"> Escolha os complementos para montar o açaí</h1>
     <div>
       <h2 class="section-title">Frutas</h2>
       <div class="complemento-item" v-for="fruta in frutas" :key="fruta.id">
@@ -160,8 +160,8 @@ export default {
 <style scoped>
 .page-title {
   font-size: 24px;
-  margin-bottom: 20px;
-  text-align: center;
+  margin-bottom: -10px;
+  text-align:center;
   color: #333;
 }
 
@@ -247,5 +247,11 @@ ul {
 .finalizar-button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 </style>

@@ -1,10 +1,6 @@
 <template>
   <q-card class="cardProduto">
-    <q-card-section>
-      <q-card-title
-        ><h5>{{ produto.nome }}</h5></q-card-title
-      >
-    </q-card-section>
+    <h5>{{ produto.nome }}</h5>
     <q-card-section>
       <q-card-subtitle>R$ {{ produto.preco.toFixed(2) }}</q-card-subtitle>
     </q-card-section>
@@ -12,7 +8,7 @@
       <q-img
         :src="produto.imagem"
         :alt="produto.nome"
-        style="width: 100%; height: 200px"
+        style="width: 100%; height: 300px; object-fit: cover"
       />
     </q-card-section>
     <q-card-action class="btnCompra">
@@ -81,8 +77,8 @@ export default {
 </script>
 <style>
 .cardProduto {
-  width: 200px;
-  min-width: 200px;
+  width: 50rem;
+  min-width: 300px;
   margin: 10px;
   padding: 10px;
   text-align: center;

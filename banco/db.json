@@ -181,6 +181,17 @@
       "cpf": "02718965070",
       "endereco": "dasdas",
       "telefone": "518888"
+    },
+    {
+      "id": "6c96",
+      "nome": "mariazinha",
+      "cpf": "881.626.070-05",
+      "endereco": "rua 12345",
+      "telefone": "012345678",
+      "login": {
+        "usuario": "881.626.070-05",
+        "senha": "012345678"
+      }
     }
   ],
   "produtos": [

@@ -37,14 +37,12 @@ export default {
     onRetirar() {
       this.$emit("retirar", this.produto);
     },
-    
   },
 };
 </script>
 <style>
 .lista {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
   background-color: white;
   border: 1px solid black;

@@ -1,9 +1,14 @@
 <template>
-  <div>
-    <q-input v-model="cpf" label="CPF" />
-    <q-input v-model="telefone" label="Telefone" type="password" />
-    <q-btn @click="fazerLogin" label="Login" color="primary" />
-  </div>
+  <q-btn @click="mostrarFormulario = true" label="Login" />
+  <q-dialog v-model="mostrarFormulario">
+    <q-card>
+      <q-card-section>
+        <q-input v-model="cpf" label="CPF" />
+        <q-input v-model="telefone" label="Telefone" type="password" />
+        <q-btn @click="fazerLogin" label="Login" color="primary" class="btn" />
+      </q-card-section>
+    </q-card>
+  </q-dialog>
 </template>
 
 <script>
@@ -16,6 +21,7 @@ export default defineComponent({
     return {
       cpf: "",
       telefone: "",
+      mostrarFormulario: false,
     };
   },
   methods: {
@@ -62,5 +68,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
-/* Estilos específicos para o componente de login */
+.btn {
+  margin-top: 20px;
+  width: 100%;
+}
 </style>
