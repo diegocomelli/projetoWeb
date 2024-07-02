@@ -1,6 +1,6 @@
 <template>
   <q-page class="container">
-    <h1 class="page-title"> Escolha os complementos para montar o açaí</h1>
+    <h1 class="page-title">Escolha os complementos para montar o açaí</h1>
     <div>
       <h2 class="section-title">Frutas</h2>
       <div class="complemento-item" v-for="fruta in frutas" :key="fruta.id">
@@ -68,16 +68,19 @@
       </div>
     </div>
     <button
-      class="finalizar-button"
-      @click="finalizarCompra"
+      class="adicionar-carrinho-button"
+      @click="adicionarAoCarrinho"
       :disabled="!hasSelectedItems"
     >
-      Finalizar Compra
+      Adicionar ao Carrinho
     </button>
   </q-page>
 </template>
 
 <script>
+import { ref } from "vue";
+import cartStore from "src/stores/cartStore";
+
 export default {
   props: {
     produtoSelecionado: {
@@ -111,25 +114,30 @@ export default {
     },
   },
   methods: {
-    finalizarCompra() {
+    adicionarAoCarrinho() {
       const itensSelecionados = [];
 
+      // Adiciona o produto principal (selecionado) ao carrinho
       if (this.produtoSelecionado.id) {
         itensSelecionados.push({
           id: this.produtoSelecionado.id,
           nome: this.produtoSelecionado.nome,
           preco: this.produtoSelecionado.preco,
         });
+        cartStore.addProduto(this.produtoSelecionado, 1);
       }
 
+      // Adiciona os complementos selecionados ao carrinho
       this.selectedItems.forEach((item) => {
         itensSelecionados.push({
           id: item.id,
           nome: item.nome,
           preco: item.preco,
         });
+        cartStore.addProduto(item, 1);
       });
 
+      // Redireciona para a página de opções de pagamento
       this.$router.push({
         name: "OpcoesPagamento",
         query: {
@@ -161,7 +169,7 @@ export default {
 .page-title {
   font-size: 24px;
   margin-bottom: -10px;
-  text-align:center;
+  text-align: center;
   color: #333;
 }
 
@@ -230,7 +238,7 @@ ul {
   color: #4caf50;
 }
 
-.finalizar-button {
+.adicionar-carrinho-button {
   display: block;
   width: 100%;
   padding: 10px 20px;
@@ -244,7 +252,7 @@ ul {
   transition: background-color 0.3s;
 }
 
-.finalizar-button:disabled {
+.adicionar-carrinho-button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }

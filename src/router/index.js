@@ -18,6 +18,11 @@ const routes = [
         }),
       },
       {
+        path: "carrinho",
+        name: "Carrinho",
+        component: () => import("components/Carrinho.vue"),
+      },
+      {
         path: "pagamento",
         name: "OpcoesPagamento",
         component: () => import("components/OpcoesPagamento.vue"),
