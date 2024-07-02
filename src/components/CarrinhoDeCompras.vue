@@ -1,4 +1,3 @@
-<!-- CarrinhoDeCompras.vue -->
 <template>
   <div>
     <!-- Conteúdo do carrinho de compras -->
@@ -28,7 +27,7 @@ export default {
   methods: {
     finalizarCompra() {
       // Lógica para finalizar a compra
-      console.log("Compra finalizada!");
+      this.$router.push("/opcoes-pagamento"); // Redireciona para a página de opções de pagamento
     },
   },
 };

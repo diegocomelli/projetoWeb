@@ -20,7 +20,7 @@ const routes = [
       {
         path: "carrinho",
         name: "Carrinho",
-        component: () => import("components/Carrinho.vue"),
+        component: () => import("components/CarrinhoDeCompras.vue"),
       },
       {
         path: "pagamento",

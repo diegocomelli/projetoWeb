@@ -122,7 +122,7 @@ export default {
       } else if (metodo === "pix") {
         this.mostrarQrCodePIX = true;
         this.mostrarFormCartao = false;
-        //  QR Code para o PIX
+        // Exemplo de geração de QR Code e chave PIX
         this.qrCodePIX =
           "https://api.qrserver.com/v1/create-qr-code/?data=chavePIX";
         this.chavePIX = "acaifood@gmail.com";

@@ -80,6 +80,7 @@
 <script>
 import { ref } from "vue";
 import cartStore from "src/stores/cartStore";
+import { useRouter } from "vue-router";
 
 export default {
   props: {
@@ -137,14 +138,16 @@ export default {
         cartStore.addProduto(item, 1);
       });
 
-      // Redireciona para a página de opções de pagamento
-      this.$router.push({
-        name: "OpcoesPagamento",
-        query: {
-          total: this.totalPagar,
-          complementos: JSON.stringify(itensSelecionados),
-        },
+      // Limpa os complementos selecionados
+      this.frutas.forEach((fruta) => {
+        fruta.selected = false;
       });
+      this.adicionais.forEach((adicional) => {
+        adicional.selected = false;
+      });
+
+      // Redireciona para a página inicial (home)
+      this.$router.push("/");
     },
     adicionarComplemento(tipo, complemento) {
       if (complemento.selected) {
