@@ -192,6 +192,17 @@
         "usuario": "881.626.070-05",
         "senha": "012345678"
       }
+    },
+    {
+      "id": "33ec",
+      "nome": "Bibi",
+      "cpf": "280.839.790-90",
+      "endereco": "rua A1B2",
+      "telefone": "519999999",
+      "login": {
+        "usuario": "280.839.790-90",
+        "senha": "519999999"
+      }
     }
   ],
   "produtos": [
