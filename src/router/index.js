@@ -28,6 +28,17 @@ const routes = [
             : [],
         }),
       },
+      {
+        path: "login",
+        name: "Login",
+        component: () => import("components/LoginPage.vue"),
+      },
+      {
+        path: "endereco/:clienteId",
+        name: "Endereco",
+        component: () => import("components/EnderecoPage.vue"),
+        props: true,
+      },
     ],
   },
   {

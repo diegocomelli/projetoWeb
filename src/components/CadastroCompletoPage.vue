@@ -114,6 +114,10 @@ export default defineComponent({
           cpf: this.cpf,
           endereco: this.endereco,
           telefone: this.telefone,
+          login: {
+            usuario: this.cpf,
+            senha: this.telefone,
+          },
         });
 
         this.$q.notify({
