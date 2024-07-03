@@ -153,6 +153,7 @@ export default {
       if (complemento.selected) {
         this.totalPagar += complemento.preco;
         this.selectedItems.push(complemento);
+        this.updateTotalPagar();
       }
     },
     removerComplemento(complemento) {
@@ -162,7 +163,14 @@ export default {
       if (index !== -1) {
         this.totalPagar -= complemento.preco;
         this.selectedItems.splice(index, 1);
+        this.updateTotalPagar();
       }
+    },
+    updateTotalPagar() {
+    this.totalPagar = this.totalProduto + this.selectedItems.reduce(
+      (total, item) => total + item.preco,
+      0
+    );
     },
   },
 };
