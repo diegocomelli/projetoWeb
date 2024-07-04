@@ -11,8 +11,11 @@
     />
   </div>
 </template>
+
 <script>
 import CardProduto from "src/components/CardProduto.vue";
+import { useAuthStore } from "src/stores/auth";
+
 export default {
   name: "ListaProdutos",
   emits: ["comprar", "retirar"],
@@ -30,16 +33,31 @@ export default {
       default: () => ["comprar", "retirar"],
     },
   },
+  computed: {
+    isAuthenticated() {
+      const authStore = useAuthStore();
+      return authStore.isAuthenticated;
+    },
+  },
   methods: {
     onComprar(produto) {
-      this.$emit("comprar", produto);
+      if (this.isAuthenticated) {
+        this.$emit("comprar", produto);
+      } else {
+        this.$q.notify({
+          color: "negative",
+          message: "Você precisa estar logado para comprar.",
+          position: "top",
+        });
+      }
     },
-    onRetirar() {
-      this.$emit("retirar", this.produto);
+    onRetirar(produto) {
+      this.$emit("retirar", produto);
     },
   },
 };
 </script>
+
 <style>
 .lista {
   display: flex;

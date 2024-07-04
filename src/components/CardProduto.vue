@@ -1,5 +1,7 @@
 <template>
-  <q-card class="cardProduto">
+  <q-card
+    :class="['cardProduto', { 'card-produto-desabilitado': !isAuthenticated }]"
+  >
     <h5>{{ produto.nome }}</h5>
     <q-card-section>
       <q-card-subtitle>R$ {{ produto.preco.toFixed(2) }}</q-card-subtitle>
@@ -11,23 +13,27 @@
         style="width: 100%; height: 300px; object-fit: cover"
       />
     </q-card-section>
-    <q-card-action class="btnCompra">
+    <q-card-actions class="btnCompra">
       <q-btn
         label="Comprar"
         color="primary"
         @click="comprar"
         v-if="botoes.includes('comprar')"
+        :disable="!isAuthenticated"
       />
       <q-btn
-        label="retirar"
+        label="Retirar"
         color="primary"
         @click="retirar"
         v-if="botoes.includes('retirar')"
       />
-    </q-card-action>
+    </q-card-actions>
   </q-card>
 </template>
+
 <script>
+import { useAuthStore } from "src/stores/auth";
+
 export default {
   name: "CardProduto", // nome do componente
   props: {
@@ -49,20 +55,15 @@ export default {
   },
   components: {}, // componentes utilizados pelo componente
   emits: ["comprar", "retirar"], // eventos emitidos pelo componente
-  created() {
-    // método executado quando o componente é criado
-    console.log(this.produto);
-  },
-  mounted() {
-    // metodo executado quando o componente é montado
-    console.log(this.produto);
-  },
   data() {
-    // dados do componente
     return {};
   },
   computed: {
     // propriedades computadas do componente
+    isAuthenticated() {
+      const authStore = useAuthStore();
+      return authStore.isAuthenticated;
+    },
   },
   methods: {
     // métodos do componente
@@ -75,7 +76,8 @@ export default {
   },
 };
 </script>
-<style>
+
+<style scoped>
 .cardProduto {
   width: 50rem;
   min-width: 300px;
@@ -86,5 +88,9 @@ export default {
 .cardProduto:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   background-color: aquamarine;
+}
+.card-produto-desabilitado {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 </style>

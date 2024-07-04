@@ -14,6 +14,7 @@
 <script>
 import { defineComponent } from "vue";
 import axios from "axios";
+import { useAuthStore } from "src/stores/auth";
 
 export default defineComponent({
   name: "LoginPage",
@@ -39,6 +40,10 @@ export default defineComponent({
               message: "Login efetuado com sucesso!",
               position: "top",
             });
+
+            const authStore = useAuthStore();
+            authStore.login(cliente);
+
             this.$router.push(`/endereco/${cliente.id}`);
           } else {
             this.$q.notify({
